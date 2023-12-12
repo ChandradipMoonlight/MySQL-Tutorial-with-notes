@@ -1,0 +1,91 @@
+SQL SYLLABUS
+
+BEGINNER LEVEL
+--------------------------
+
+SQL commands
+    DDL, DML , DC, TCL, DQL
+
+Data Type
+    String Type,
+    Number Type,
+    Date,
+    FLOAT/DECIMAL
+    BOOLEAN
+    IDENTITY column (auto increment column)
+
+Constraints
+    Primary Key,
+    Foreign Key,
+    Not Null, Unique, Default.
+
+Normalization in SQL
+    1NF, 2NF, 3NF, BCNF
+
+Operators
+    Arithmetic Operators
+    Logical Operators,
+    Comparison Operators,
+    UNION, UNION ALL Operators
+
+CASE statement
+    Simple case statement as well nested case statement
+
+Important SQL clause
+    DISTINCT clause
+    ORDER BY clause
+    LIMIT/TOP clause
+
+Joins
+    INNER JOIN
+    LEFT JOIN
+    RIGHT JOIN
+    CROSS JOIN
+    SELF JOIN
+
+
+RESOURCE
+    W3School
+
+Practice Platforms
+    StrataScratch (Easy SQL problems)
+    LeetCode
+    DataLemur
+
+------------------------------------------------------
+2. Intermediate SQL
+
+GROUP BY and HAVING clause
+
+Aggregation functions
+    min, max, avg, sum, count
+
+Order of execution
+
+Sub queries
+CTE table with clause
+
+In build functions
+    String functions
+        Substring
+        Position
+    Date functions
+        Extract
+        To_Date
+
+Window functions
+    RANK
+    DENSE_RANK
+    ROW NUMBER 
+    LEAD
+
+VIEWS
+-------------------------------
+
+Advanced SQL
+
+Recursive SQL Queries 
+pivot table/crosstab function
+Materialized View 
+Store Procedure
+User Defined functions
