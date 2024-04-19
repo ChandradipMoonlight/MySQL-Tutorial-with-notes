@@ -195,5 +195,33 @@ CREATE TABLE address (
     FOREIGN KEY (customer_id) REFERENCES customer(id)
 );
 
+CREATE TABLE fintrip_holidays (
+    id bigint NOT NULL AUTO_INCREMENT,
+    company_id bigint NOT NULL DEFAULT '0',
+    title varchar(255) NOT NULL,
+    date varchar(50) NOT NULL,
+    created_at datetime(6) NOT NULL,
+    updated_at datetime(6) NOT NULL,
+    deleted tinyint(1) NOT NULL DEFAULT '0',
+    attrs text,
+    PRIMARY KEY (id, company_id)
+);
+
+CREATE TABLE `fintrip_employee_attendance` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `created_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6) NOT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `company_id` bigint NOT NULL DEFAULT '0',
+  `attrs` text,
+  `employee_id` bigint NOT NULL,
+  `date` varchar(50) NOT NULL,
+  `check_in` datetime(6) DEFAULT NULL,
+  `check_out` datetime(6) DEFAULT NULL,
+  `available` tinyint(1) DEFAULT NULL,
+  `status` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`id`,`company_id`)
+);
+
 
 
