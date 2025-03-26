@@ -19,6 +19,53 @@ CREATE TABLE Student(
     name VARCHAR(50)
 );
 
+CREATE TABLE `fintrip_credit_cards` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `company_id` bigint NOT NULL DEFAULT '0',
+  `attrs` text,
+  `created_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6) NOT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `employee_id` bigint NOT NULL DEFAULT '0',
+  `card_number` varchar(20) NOT NULL,
+  `card_reference` varchar(50) NOT NULL,
+  `card_type` varchar(70) NOT NULL,
+  `issue_date` datetime(6) NOT NULL,
+  `cycle_period` bigint DEFAULT NULL,
+  `statement_date` datetime(6) DEFAULT NULL,
+  `due_date` datetime(6) DEFAULT NULL,
+  `card_status` varchar(20) NOT NULL,
+  `initial_limit` double(15,2) DEFAULT '0.00',
+  `actual_limit` double(15,2) DEFAULT '0.00',
+  `available_limit` double(15,2) DEFAULT '0.00',
+  `data` text,
+  PRIMARY KEY (`id`,`company_id`),
+  KEY `Search1` (`company_id`,`card_number`,`card_reference`),
+  KEY `Search2` (`company_id`,`issue_date`,`employee_id`)
+)
+
+CREATE TABLE fintrip.fintrip_credit_cards_types (
+  id bigint NOT NULL AUTO_INCREMENT,
+  company_id bigint DEFAULT NULL,
+  title varchar(255) DEFAULT NULL,
+  created_at datetime(6) NOT NULL,
+  updated_at datetime(6) NOT NULL,
+  deleted tinyint(1) NOT NULL DEFAULT 0,
+  attrs text,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE fintrip.fintrip_credit_cards (
+  id bigint NOT NULL AUTO_INCREMENT,
+  company_id bigint DEFAULT NULL,
+  title varchar(255) DEFAULT NULL,
+  created_at datetime(6) NOT NULL,
+  updated_at datetime(6) NOT NULL,
+  deleted tinyint(1) NOT NULL DEFAULT 0,
+  attrs text,
+  PRIMARY KEY (id)
+);
+
 -- ! select and view all columns
  SELECT * FROM Student;
 
@@ -149,6 +196,12 @@ WHERE teacherId = 101;
 -- ! ADD column
 --  ALTER TABLE tableName
 --  ADD COLUMN columnName dataType
+
+ALTER TABLE fintrip.fintrip_credit_cards
+ADD COLUMN card_currency VARCHAR(150);
+
+ALTER TABLE fintrip.fintrip_credit_cards
+ADD COLUMN 'type' bigint DEFAULT '0',
 
 -- ! DROP Column
 -- ALTER TABLE tableName
