@@ -277,4 +277,81 @@ CREATE TABLE `fintrip_employee_attendance` (
 );
 
 
+CREATE TABLE `vc_vendor_invoices` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `amount` double(16,3) NOT NULL,
+  `service` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `vendor_id` bigint DEFAULT '0',
+  `token_secret` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `data` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `attrs` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `owner_type` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `owner_id` bigint NOT NULL DEFAULT '0',
+  `stage` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `created_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6) NOT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `company_id` bigint NOT NULL DEFAULT '0',
+  `status` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'PENDING',
+  `tax_info` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `type` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `office_id` bigint DEFAULT '0',
+  `owner` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
+  `transaction_id` bigint DEFAULT NULL,
+  `invoice_id` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  `views` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `tag` varchar(245) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `duplicates` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `fraud` tinyint(1) DEFAULT '0',
+  `due_date` datetime(6) DEFAULT NULL,
+  `category_id` bigint DEFAULT '0',
+  `config` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `filter_tag` varchar(245) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `payment_ticket_id` bigint DEFAULT NULL,
+  `po_id` bigint DEFAULT '0',
+  `delivery_address_id` bigint DEFAULT '0',
+  `vendor_address` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT 'default',
+  `scanner_id` bigint DEFAULT '0',
+  `recon_status` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT 'SKIPPED',
+  `currency` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT 'INR',
+  `currency_amount` double(16,3) DEFAULT NULL,
+  `super_category_id` bigint DEFAULT '0',
+  `grn` tinyint(1) DEFAULT '0',
+  `project_id` bigint DEFAULT '0',
+  `contract_id` bigint DEFAULT NULL,
+  `asn_id` bigint DEFAULT NULL,
+  `violations` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `bill_number` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `approved_at` datetime(6) DEFAULT NULL,
+  `finance_approved_at` datetime(6) DEFAULT NULL,
+  `settled_at` datetime(6) DEFAULT NULL,
+  PRIMARY KEY (`id`,`company_id`),
+  KEY `Search` (`company_id`,`status`,`office_id`),
+  KEY `Search3` (`company_id`,`owner_type`,`owner_id`,`status`),
+  KEY `Search2` (`company_id`,`type`,`status`,`office_id`),
+  KEY `Search4` (`company_id`,`tag`),
+  KEY `Search5` (`company_id`,`office_id`,`filter_tag`,`status`),
+  KEY `Search6` (`company_id`,`date`,`office_id`),
+  KEY `Search7` (`company_id`,`created_at`,`office_id`),
+  KEY `Search8` (`company_id`,`updated_at`),
+  KEY `Search9` (`company_id`,`created_at`),
+  KEY `index10` (`company_id`,`invoice_id`),
+  KEY `index11` (`company_id`,`po_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1116592 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin
+/*!50100 PARTITION BY HASH (`company_id`)
+PARTITIONS 40 */
+
+ALTER TABLE fintrip.vc_vendor_invoices
+ADD COLUMN integration_failed tinyint(1);
+
+
+ALTER TABLE fintrip.vc_purchase_order
+ADD COLUMN integration_failed tinyint(1);
+
+
+
+
+
 
